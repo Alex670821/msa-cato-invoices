@@ -15,7 +15,6 @@ public class InvoiceDetail {
         private BigDecimal unitPrice;
         private BigDecimal subTotal;
         public void calculateSubTotal(){
-
                 subTotal = unitPrice.multiply(new BigDecimal(quatity));
         }
 
