@@ -39,6 +39,7 @@ public class InvoiceHeader {
     }
 
     public void calculateVatAmount(){
+
         vatAmount = subTotalAmount.multiply(Constant.VAT_RATE);
     }
 
