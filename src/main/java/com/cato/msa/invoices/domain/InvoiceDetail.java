@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 @Setter
 public class InvoiceDetail {
 
-
         private Long id;
         private String productName;
         private Integer quatity;
