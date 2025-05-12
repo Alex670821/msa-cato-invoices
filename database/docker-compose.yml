@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres_db
+    ports:
+      - "5431:5432"
+    environment:
+      POSTGRES_USER: invoices
+      POSTGRES_PASSWORD: invoices
+      POSTGRES_DB: invoices_db
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  db_data:
