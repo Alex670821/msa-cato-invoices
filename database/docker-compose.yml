@@ -12,6 +12,8 @@ services:
       POSTGRES_DB: invoices_db
     volumes:
       - db_data:/var/lib/postgresql/data
+      - ./install.sql:/docker-entrypoint-initdb.d/install.sql
+      - ./ddl:/docker-entrypoint-initdb.d/ddl
 
 networks:
   default:
