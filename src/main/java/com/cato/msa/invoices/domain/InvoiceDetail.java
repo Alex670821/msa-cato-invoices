@@ -36,7 +36,6 @@ public class InvoiceDetail {
         private InvoiceHeader invoiceHeader;
 
         public void calculateSubTotal(){
-
                 subTotal = unitPrice.multiply(new BigDecimal(quantity));
         }
 

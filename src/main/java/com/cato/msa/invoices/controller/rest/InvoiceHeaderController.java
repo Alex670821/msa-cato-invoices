@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class InvoiceHeaderController implements InvoiceHeaderApi {
 
@@ -21,5 +23,10 @@ public class InvoiceHeaderController implements InvoiceHeaderApi {
     public ResponseEntity<InvoiceHeader> save(InvoiceHeader invoiceHeader) {
         InvoiceHeader savedInvoiceHeader = invoiceHeaderService.createInvoiceHeader(invoiceHeader);
         return new ResponseEntity<>(savedInvoiceHeader, HttpStatus.CREATED);
+    }
+
+    @Override
+    public ResponseEntity<List<InvoiceHeader>> findAll() {
+        return ResponseEntity.ok(invoiceHeaderService.getAll());
     }
 }
