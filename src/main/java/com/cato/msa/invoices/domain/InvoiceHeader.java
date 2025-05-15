@@ -4,7 +4,6 @@ import com.cato.msa.invoices.constant.Constant;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -33,14 +32,12 @@ public class InvoiceHeader {
     private BigDecimal totalAmount;
     @OneToMany(mappedBy = "invoiceHeader", cascade = CascadeType.ALL)
     private List<InvoiceDetail> invoiceDetails ;
-
     public void calculateInvoiceAmounts(){
         calculateSubTotalAmount();
         calculateVatAmount();
         calculateTotalAmount();
         addInvoiceDetail();
     }
-
     public void calculateSubTotalAmount(){
         subTotalAmount = BigDecimal.ZERO;
         for (InvoiceDetail invoiceDetail:invoiceDetails){
@@ -48,21 +45,15 @@ public class InvoiceHeader {
             subTotalAmount = subTotalAmount.add(invoiceDetail.getSubTotal());
         }
     }
-
     public void calculateVatAmount(){
-
         vatAmount = subTotalAmount.multiply(Constant.VAT_RATE);
     }
-
     public void calculateTotalAmount(){
-
         totalAmount = subTotalAmount.add(vatAmount);
     }
-
     public void addInvoiceDetail(){
         for (InvoiceDetail invoiceDetail: invoiceDetails){
             invoiceDetail.setInvoiceHeader(this);
         }
     }
-
 }
