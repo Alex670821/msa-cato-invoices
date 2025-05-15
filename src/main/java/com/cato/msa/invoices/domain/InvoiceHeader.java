@@ -32,22 +32,37 @@ public class InvoiceHeader {
     @Column(name = "INH_TOTAL", nullable = false)
     private BigDecimal totalAmount;
     @OneToMany(mappedBy = "invoiceHeader", cascade = CascadeType.ALL)
-    private List<InvoiceDetail> invoiceDetail;
+    private List<InvoiceDetail> invoiceDetails ;
+
+    public void calculateInvoiceAmounts(){
+        calculateSubTotalAmount();
+        calculateVatAmount();
+        calculateTotalAmount();
+        addInvoiceDetail();
+    }
 
     public void calculateSubTotalAmount(){
         subTotalAmount = BigDecimal.ZERO;
-        for (InvoiceDetail invoiceDetail:invoiceDetail){
+        for (InvoiceDetail invoiceDetail:invoiceDetails){
             invoiceDetail.calculateSubTotal();
             subTotalAmount = subTotalAmount.add(invoiceDetail.getSubTotal());
         }
     }
 
     public void calculateVatAmount(){
+
         vatAmount = subTotalAmount.multiply(Constant.VAT_RATE);
     }
 
     public void calculateTotalAmount(){
+
         totalAmount = subTotalAmount.add(vatAmount);
+    }
+
+    public void addInvoiceDetail(){
+        for (InvoiceDetail invoiceDetail: invoiceDetails){
+            invoiceDetail.setInvoiceHeader(this);
+        }
     }
 
 }
