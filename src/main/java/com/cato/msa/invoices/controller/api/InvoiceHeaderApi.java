@@ -16,4 +16,7 @@ public interface InvoiceHeaderApi {
 
     @GetMapping("/{number}")
     ResponseEntity<InvoiceHeader> findByNumber(@PathVariable String number);
+
+    @DeleteMapping("/{id}")
+    ResponseEntity<Void> deleteById(@PathVariable Long id);
 }
