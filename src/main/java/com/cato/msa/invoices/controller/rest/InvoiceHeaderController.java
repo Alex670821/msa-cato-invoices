@@ -23,4 +23,12 @@ public class InvoiceHeaderController implements InvoiceHeaderApi {
     public ResponseEntity<List<InvoiceHeader>> findAll() {
         return ResponseEntity.ok(invoiceHeaderService.getAll());
     }
+
+    @Override
+    public ResponseEntity<InvoiceHeader> findByNumber(String number) {
+        InvoiceHeader invoice = invoiceHeaderService.getInvoiceByNumber(number);
+        return new ResponseEntity<>(invoice, HttpStatus.OK);
+    }
+
+
 }

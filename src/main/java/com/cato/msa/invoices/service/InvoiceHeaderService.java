@@ -6,4 +6,5 @@ import java.util.List;
 public interface InvoiceHeaderService {
     InvoiceHeader createInvoiceHeader(InvoiceHeader invoiceHeader);
     List<InvoiceHeader> getAll();
+    InvoiceHeader getInvoiceByNumber(String number);
 }
