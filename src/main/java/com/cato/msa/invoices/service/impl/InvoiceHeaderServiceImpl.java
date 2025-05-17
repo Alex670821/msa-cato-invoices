@@ -37,7 +37,13 @@ public class InvoiceHeaderServiceImpl implements InvoiceHeaderService {
     public InvoiceHeader getInvoiceByNumber(String number) {
         return invoiceHeaderRepository.findByNumber(number).orElseThrow(()-> new NotFoundException("Invoice with number '" + number + "' was not found"));
     }
+
+    @Override
+    public void deleteById(Long id) {
+        invoiceHeaderRepository.deleteById(id);
     }
+
+}
 
 
 
