@@ -7,4 +7,5 @@ public interface InvoiceHeaderService {
     InvoiceHeader createInvoiceHeader(InvoiceHeader invoiceHeader);
     List<InvoiceHeader> getAll();
     InvoiceHeader getInvoiceByNumber(String number);
+    void deleteById(Long id);
 }

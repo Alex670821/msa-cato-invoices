@@ -30,5 +30,11 @@ public class InvoiceHeaderController implements InvoiceHeaderApi {
         return new ResponseEntity<>(invoice, HttpStatus.OK);
     }
 
+    @Override
+    public ResponseEntity<Void> deleteById(Long id) {
+        invoiceHeaderService.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 
 }
