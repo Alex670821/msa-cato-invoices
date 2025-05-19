@@ -15,9 +15,22 @@ services:
       - ./install.sql:/docker-entrypoint-initdb.d/install.sql
       - ./ddl:/docker-entrypoint-initdb.d/ddl
 
-networks:
-  default:
-    driver: bridge
+  msa-invoices:
+    build:
+      context: ../
+    container_name: msa-invoices
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: invoices_db
+      DB_USER: invoices
+      DB_PASS: invoices
+    ports:
+      - "8080:8080"
+    networks:
+      - default
 
 volumes:
   db_data:
