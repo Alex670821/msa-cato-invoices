@@ -1,7 +1,7 @@
 package com.cato.msa.invoices.controller;
 
-import com.cato.msa.invoices.exception.NotContentException;
-import com.cato.msa.invoices.exception.NotFoundException;
+import com.cato.msa.invoices.exceptions.NotContentException;
+import com.cato.msa.invoices.exceptions.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

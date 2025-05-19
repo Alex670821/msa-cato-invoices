@@ -1,4 +1,4 @@
-package com.cato.msa.invoices.exception;
+package com.cato.msa.invoices.exceptions;
 
 public class NotContentException extends RuntimeException{
     public NotContentException(String message) {
